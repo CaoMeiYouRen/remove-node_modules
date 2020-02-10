@@ -1,0 +1,33 @@
+{
+  "name": "remove-node_modules",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "description": "移除指定文件夹下所有node_modules",
+  "keywords": [
+    "remove"
+  ],
+  "author": "cao-mei-you-ren",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaoMeiYouRen/remove-node_modules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CaoMeiYouRen/remove-node_modules/issues"
+  },
+  "homepage": "https://github.com/CaoMeiYouRen/remove-node_modules#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "fs-extra": "^8.1.0",
+    "rimraf": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.0.1",
+    "@types/node": "^13.7.0",
+    "@types/rimraf": "^2.0.3"
+  }
+}

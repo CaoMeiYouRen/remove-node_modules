@@ -1,0 +1,2 @@
+E:\example\example-project
+/home/user/example/example-project
