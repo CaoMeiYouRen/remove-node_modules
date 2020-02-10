@@ -60,8 +60,8 @@ async function removeDir(root: string) {
 }
 async function start() {
     let dirname = 'node_modules'
-    let igonre = (await fs.readFile('../ignore.txt')).toString().split(/\r\n|\n/)
-    let rootdirs = (await fs.readFile('../rootdirs.txt')).toString().split(/\r\n|\n/)
+    let igonre = (await fs.readFile(path.join(__dirname,'../ignore.txt'))).toString().split(/\r\n|\n/)
+    let rootdirs = (await fs.readFile(path.join(__dirname,'../rootdirs.txt'))).toString().split(/\r\n|\n/)
     let count = 0
     for (let i = 0; i < rootdirs.length; i++) {
         count += (await remove(dirname, rootdirs[i], igonre))
