@@ -23,11 +23,13 @@
   "dependencies": {
     "colors": "^1.4.0",
     "fs-extra": "^8.1.0",
+    "moment": "^2.24.0",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^13.7.0",
-    "@types/rimraf": "^2.0.3"
+    "@types/rimraf": "^2.0.3",
+    "typescript": "^3.8.2"
   }
 }

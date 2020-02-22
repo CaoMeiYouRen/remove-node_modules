@@ -2,6 +2,15 @@ import fs = require('fs-extra')
 import path = require('path')
 import colors = require('colors')
 import rimraf = require('rimraf')
+import moment = require('moment')
+export function timeFormat(date: number | string | Date = Date.now(), pattern: string = 'YYYY-MM-DD HH:mm:ss.SSS') {
+    if (typeof date == 'number') {
+        if (date < 1e10) {
+            date *= 1000
+        }
+    }
+    return moment(date).format(pattern)
+}
 // 递归的删除指定名称的文件夹
 async function remove(dirname: string, root: string, exclude: string[]) {
     try {
@@ -47,21 +56,23 @@ async function removeDir(root: string) {
         return
     }
     return new Promise((resolve, reject) => {
-        console.log(colors.green('正在删除 ') + colors.yellow(root))
+        let start = Date.now()
+        console.log(colors.gray(timeFormat(start)) + colors.green(' 正在删除 ') + colors.yellow(root))
         rimraf(root, (err) => {
             if (err) {
                 console.error(err)
                 reject(err)
             }
-            console.log(colors.green('成功删除 ') + colors.yellow(root))
+            let end = Date.now()
+            console.log(colors.gray(timeFormat(start)) + colors.green(' 成功删除，用时 ' + (end - start) + ' 毫秒'))
             resolve(true)
         })
     })
 }
 async function start() {
     let dirname = 'node_modules'
-    let igonre = (await fs.readFile(path.join(__dirname,'../ignore.txt'))).toString().split(/\r\n|\n/)
-    let rootdirs = (await fs.readFile(path.join(__dirname,'../rootdirs.txt'))).toString().split(/\r\n|\n/)
+    let igonre = (await fs.readFile(path.join(__dirname, '../ignore.txt'))).toString().split(/\r\n|\n/)
+    let rootdirs = (await fs.readFile(path.join(__dirname, '../rootdirs.txt'))).toString().split(/\r\n|\n/)
     let count = 0
     for (let i = 0; i < rootdirs.length; i++) {
         count += (await remove(dirname, rootdirs[i], igonre))
