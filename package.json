@@ -6,7 +6,7 @@
   "keywords": [
     "remove"
   ],
-  "author": "cao-mei-you-ren",
+  "author": "CaoMeiYouRen",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
