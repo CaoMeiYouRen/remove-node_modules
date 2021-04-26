@@ -9,7 +9,9 @@
   "author": "CaoMeiYouRen",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "lint": "cross-env NODE_ENV=production eslint src --fix --ext .ts,.js",
+    "build": "rimraf dist && tsc",
+    "dev": "cross-env NODE_ENV=development ts-node-dev src/index.ts",
     "start": "node dist/index.js"
   },
   "repository": {
@@ -24,12 +26,22 @@
     "colors": "^1.4.0",
     "fs-extra": "^8.1.0",
     "moment": "^2.24.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "tiny-async-pool": "^1.2.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^13.7.0",
     "@types/rimraf": "^2.0.3",
+    "@types/tiny-async-pool": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.21.0",
+    "eslint-config-cmyr": "^1.1.8",
+    "rimraf": "^3.0.2",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
     "typescript": "^3.8.2"
   }
 }
